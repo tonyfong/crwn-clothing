@@ -12,7 +12,7 @@ const CollectionItem = ({item, addItem}) => {
     return (
         <div className='collection-item'>
             <div 
-                class='image'
+                className='image'
                 style={{
                     backgroundImage: `url(${imageUrl})`
                 }} 
