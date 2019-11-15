@@ -9,7 +9,8 @@ import Header from './page/header/header.component';
 import SignInAndSignOut from './page/sign-in-and-sign-up/sign-in-and-sign-up.component';
 import CheckoutPage from './page/checkout/checkout.component';
 
-import { auth, createUserProfileDocument } from './firebase/firebase.util';
+// eslint-disable-next-line
+import { auth, createUserProfileDocument, addCollectionAndDocuments } from './firebase/firebase.util';
 import { setCurrentUser } from './redux/user/user.actions'
 import { selectCurrentUser } from './redux/user/user.selectors';
 
@@ -19,7 +20,8 @@ class App extends React.Component {
   unsubscribeFromAuth = null
 
   componentDidMount() {
-    const {setCurrentUser} = this.props;
+    // eslint-disable-next-line
+    const {setCurrentUser, shopCollections} = this.props;
 
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
       if (userAuth) {
@@ -31,9 +33,8 @@ class App extends React.Component {
             ...snapShot.data()
           });
         });
-      } else {
-        setCurrentUser(userAuth);
       }
+      setCurrentUser(userAuth);
     });
   }
 
