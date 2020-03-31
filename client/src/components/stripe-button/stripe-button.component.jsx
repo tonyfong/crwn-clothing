@@ -9,7 +9,7 @@ const StripeCheckoutButton = ({ price }) => {
   const publishableKey = "pk_test_sPGJ2KEJtI2MDB452J5dOzuV00ZYQiKEFe";
   const onToken = token => {
     // console.log(token);
-    // alert("Payment Successful");
+    alert("Sending payment info to Stripe ...");
     axios({
       url: 'payment',
       method: 'post',
@@ -18,7 +18,7 @@ const StripeCheckoutButton = ({ price }) => {
         token
       }
     }).then(response=> {
-        alert('Payment successful');
+        alert('Payment accepted. Thanks for your order.');
     }).catch(error=> {
       console.log('Payment error: ', JSON.parse(error));
       alert('Payment failed. Please check your payment information.')
